@@ -1,0 +1,51 @@
+    To create an instance -
+    aws ec2 run-instances --image-id ami-aa1b34cf --count 1 --instance-type t2.micro --key-name aaa --security-groups launch-wizard-1
+
+                                      To describe instance-
+    aws ec2 describe-instances --instance-ids ()
+    aws ec2 describe-instances --filters "Name=instance-type,Values=t2.micro"
+    aws ec2 describe-instances --filters "Name=instance-type,Values=t2.micro,m1.medium" "Name=availability-zone,Values=us-west-2c"
+	aws ec2 describe-regions
+    aws ec2 describe-regions --filters "Name=endpoint,Values=*us*"
+    aws ec2 describe-regions --query 'Regions[].{Name:RegionName}' --output text
+
+
+                                      To launch ec2 with vpc
+    aws ec2 run-instances --image-id ami-abc12345 --count 1 --instance-type t2.micro --key-name MyKeyPair --security-group-ids sg-903004f8 --subnet-id subnet-6e7f829e
+   
+                                      To stop ec2 instance
+    aws ec2 stop-instances --instance-ids ()
+	aws ec2 terminate-instances --instance-ids ()
+                                      
+									   To create User
+	aws iam create-user --user-name surendra
+    aws iam create-group --group-name MyIamGroup---To create a group
+
+	
+                                     To add a user to an IAM group
+
+    aws iam add-user-to-group --user-name Surendra --group-name Admins
+ 	
+                                      To get the group information
+    aws iam get-group --group-name MyIamGroup
+	 
+                                       To describe all volumes
+
+    aws ec2 describe-volumes
+	                                    To create a new volume
+    aws ec2 create-volume --size 80 --region us-east-1 --availability-zone us-east-1a --volume-type gp2
+
+	                                    To create a new Provisioned IOPS (SSD) volume from a snapshot
+
+	aws ec2 create-volume --region us-east-1 --availability-zone us-east-1a --snapshot-id snap-066877671789bd71b --volume-type io1 --iops 1000
+                                    
+									    To attach a volume to an instance
+    aws ec2 attach-volume --volume-id vol-1234567890abcdef0 --instance-id i-01474ef662b89480 --device /dev/sdf
+                                        To delete a volume
+
+    aws ec2 delete-volume --volume-id ()
+	
+	                                    To create a snapshot
+    aws ec2 create-snapshot --volume-id vol-1234567890abcdef0 --description "This is my root volume snapshot."
+
+	

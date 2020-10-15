@@ -1,0 +1,6 @@
+
+From centos
+RUN  yum update -y
+RUN yum install wget -y
+WORDIR /opt
+RUN wget https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.8%2B10/OpenJDK11U-jdk_s390x_linux_hotspot_11.0.8_10.tar.gz

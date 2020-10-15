@@ -1,0 +1,7 @@
+
+From centos
+RUN yum install  httpd -y
+RUN touch   /var/www/html/index.html
+RUN  echo  "This is sample web page" >> /var/www/html/index.html
+EXPOSE 80
+ENTRYPOINT["/usr/sbin/httpd ", "-D", "FOREGROUND"]
